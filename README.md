@@ -16,5 +16,5 @@ Starting node rabbit@rabbit2 ...
 
 # do the same for a second broker
 
-#
+# http://localhost:30001/#/ add port numbers
 #
