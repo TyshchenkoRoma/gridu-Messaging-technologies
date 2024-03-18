@@ -1,5 +1,7 @@
 package org.gridu;
 
+import org.common.Order;
+import org.common.OrderType;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import javax.annotation.PostConstruct;
 import java.util.Random;
 import java.util.logging.Logger;
+
 
 @SpringBootApplication
 public class Sender {
@@ -28,7 +31,7 @@ public class Sender {
     public void send() {
         for (int i = 0; i < 100000; i++) {
             int id = new Random().nextInt(100000);
-           // template.convertAndSend(new Order(id, "TEST"+id, OrderType.values()[(id%2)]));
+            template.convertAndSend(new Order(id, "TEST"+id, OrderType.values()[(id%2)]));
         }
         logger.info("Sending completed.");
     }
